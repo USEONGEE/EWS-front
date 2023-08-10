@@ -57,7 +57,7 @@ export default function FileListPage() {
       }
       const response = await instance.post(requests.analyze(selectedFileId), formData, axiosConfig);
       if (response.status === 200) {
-        setResult(response);
+        setResult(response.data);
       }
     } catch (error) {
       alert("데이터 분석 처리 요청에 에러가 발생했습니다. 관리자에게 문의하세요");

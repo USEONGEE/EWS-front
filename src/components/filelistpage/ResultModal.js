@@ -9,7 +9,11 @@ export default function ResultModal({ setUseModal, reuslt }) {
         <Title>결과</Title>
         <GapContainer />
         {!!reuslt ?
-          reuslt :
+          reuslt.map((item, index) => (
+          <div key={index}>
+            <h1>{item.name}</h1>
+            <h2>{item.url}</h2>
+          </div>)) :
           <>
             <h1>분석 중...</h1>
             <h2>URL창에서 결과를 다운로드할 수 있습니다.</h2>
