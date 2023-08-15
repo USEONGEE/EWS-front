@@ -37,6 +37,7 @@ export default function FileListPage() {
     fetchData();
   }, [])
 
+  // 데이터 분석 요청을 보내는 함수
   const sendData = async () => {
     try {
       if (!(checkedFeatures.length > 0 && checkedTargets.length > 0)) {
@@ -57,6 +58,7 @@ export default function FileListPage() {
       }
       const response = await instance.post(requests.analyze(selectedFileId), formData, axiosConfig);
       if (response.status === 200) {
+        console.log(response.data)
         setResult(response.data);
       }
     } catch (error) {
@@ -182,6 +184,7 @@ export default function FileListPage() {
         <ResultModal
           setUseModal={setUseModeal}
           result={result}
+          setResult={setResult}
         /> :
         null}
     </PageContainer>

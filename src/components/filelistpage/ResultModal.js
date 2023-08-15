@@ -1,19 +1,29 @@
 import React from 'react'
 import { styled } from 'styled-components'
 
-export default function ResultModal({ setUseModal, reuslt }) {
+export default function ResultModal({ setUseModal, result, setResult }) {
+
+  const handleClose = () => {
+    setUseModal(false);
+    setResult(null);
+    // 서버에 종료  트리거 요청도 추가해야함
+  }
+
+
+  console.log(result);
+
   return (
     <Container>
-      <CloseButton onClick={() => setUseModal(false)}>x</CloseButton>
+      <CloseButton onClick={handleClose}>x</CloseButton>
       <PostContainer>
         <Title>결과</Title>
         <GapContainer />
-        {!!reuslt ?
-          reuslt.map((item, index) => (
-          <div key={index}>
-            <h1>{item.name}</h1>
-            <h2>{item.url}</h2>
-          </div>)) :
+        {!!result ?
+          result.map((item, index) => (
+            <div key={index}>
+              <h1>{item.name}</h1>
+              <a href={item.url} target='_blank'>{item.url}</a>
+            </div>)) :
           <>
             <h1>분석 중...</h1>
             <h2>URL창에서 결과를 다운로드할 수 있습니다.</h2>

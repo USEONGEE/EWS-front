@@ -45,6 +45,8 @@ export default function FileUploadingPage() {
       setContent('');
       setFile(null);
 
+      alert("파일 등록이 완료되었습니다.");
+
       return response.status
     }
     return
